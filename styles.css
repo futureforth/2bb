@@ -91,3 +91,29 @@ aside { min-width: 0; padding: 28px 22px; background: #fdf3f3; display: flex; fl
 .b-yellow { color: #7a0d12; background: #ffe14d; border: 1px solid #c79a00; }
 
 footer { background: linear-gradient(#a90f15, #6e0d12); color: #ffd6d6; font-size: 11px; padding: 14px 28px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+
+/* Fix audio player column layout and overflow */
+.ep-table .ep-grid {
+  display: grid;
+  grid-template-columns: 115px 45px 1fr 60px;
+  align-items: center;
+  gap: 10px;
+}
+
+.ep-play {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.ep-play audio {
+  width: 110px;
+  height: 32px;
+}
+
+.ep-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
