@@ -52,13 +52,11 @@ p { margin: 0; font-size: 13px; line-height: 1.7; }
 .code { font: bold 12px "Courier New", Courier, monospace; color: #b5121a; }
 .title { font-size: 13px; line-height: 1.35; }
 .dur { font: 12px "Courier New", Courier, monospace; color: #6b4a4a; text-align: right; }
-.progress-row { display: none; grid-template-columns: 44px minmax(0,1fr) auto; gap: 10px; align-items: center; }
-.ep.current .progress-row { display: grid; }
-.bar { height: 10px; border: 1px solid #a90f15; background: #fff; border-radius: 5px; cursor: pointer; position: relative; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,.2); }
-.fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(#ff6a6f, #c8161d); }
-.time { font: 11px "Courier New", Courier, monospace; color: #6b4a4a; }
-.missing { display: none; padding-left: 54px; font-size: 11px; color: #b5121a; }
-.ep.current.no-audio .missing { display: block; }
+.player { display: none; padding-left: 54px; flex-direction: column; gap: 4px; }
+.ep.current .player { display: flex; }
+.player iframe { width: 100%; height: 100px; border: 1px solid #a90f15; background: #fff; display: block; }
+.dl { font-size: 11px; align-self: flex-end; }
+@media (max-width: 520px) { .player { padding-left: 0; } }
 
 /* Where are they now */
 .polaroids { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px; }
