@@ -9,6 +9,29 @@
 <meta property="og:image" content="assets/album-art.png">
 <link rel="icon" href="assets/album-art.png">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Audio player width fix to prevent title overlap */
+  .ep-table .ep-grid {
+    display: grid;
+    grid-template-columns: 115px 45px 1fr 60px;
+    align-items: center;
+    gap: 10px;
+  }
+  .ep-play {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+  .ep-play audio {
+    width: 110px;
+    height: 32px;
+  }
+  .ep-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+</style>
 </head>
 <body>
 <div class="page">
@@ -129,7 +152,7 @@
       .then(data => {
         const mp3Files = data.files.filter(file => file.name.endsWith('.mp3'));
 
-        // Natural numerical sort (2BB1, 2BB2 ... 2BB38a, 2BB38b, 2BB48, bonus)
+        // Natural numerical sort
         mp3Files.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
         epCount.textContent = `${mp3Files.length} Episodes`;
