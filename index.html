@@ -9,8 +9,13 @@
 <meta property="og:image" content="assets/album-art.png">
 <link rel="icon" href="assets/album-art.png">
 <link rel="stylesheet" href="styles.css">
+
+<!-- Open-Source Plyr Audio Player -->
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
 <style>
-  /* Page Container & Max Width Fix */
+  /* Centered Page Layout & Width Limit */
   .page {
     max-width: 960px;
     margin: 0 auto;
@@ -18,23 +23,29 @@
     box-sizing: border-box;
   }
 
-  /* Audio player column layout & width fix */
+  /* Episode Table Grid Layout */
   .ep-table .ep-grid {
     display: grid;
-    grid-template-columns: 120px 45px 1fr 60px;
+    grid-template-columns: 140px 45px 1fr 60px;
     align-items: center;
     gap: 10px;
   }
 
   .ep-play {
-    display: flex;
-    align-items: center;
+    width: 140px;
     min-width: 0;
   }
 
-  .ep-play audio {
-    width: 115px;
-    height: 32px;
+  /* Compact Audio Player Controls */
+  .plyr--audio .plyr__controls {
+    padding: 2px 6px;
+    background: #f1f3f4;
+    border-radius: 16px;
+  }
+
+  .plyr__time {
+    font-size: 11px;
+    padding: 0 4px;
   }
 
   .ep-title {
@@ -150,17 +161,7 @@
     const archiveItem = "2-bb-50";
     const epList = document.getElementById("ep-list");
     const epCount = document.getElementById("ep-count");
-
-    // Global listener: Pause any active audio player when a new one starts playing
-    document.addEventListener("play", (e) => {
-      if (e.target.tagName === "AUDIO") {
-        document.querySelectorAll("audio").forEach(audio => {
-          if (audio !== e.target) {
-            audio.pause();
-          }
-        });
-      }
-    }, true);
+    const playerInstances = [];
 
     function formatTime(seconds) {
       if (!seconds || isNaN(seconds)) return "--:--";
@@ -174,7 +175,7 @@
       .then(data => {
         const mp3Files = data.files.filter(file => file.name.endsWith('.mp3'));
 
-        // Natural numerical sort
+        // Natural numerical sort (2BB1, 2BB2, ... 2BB38a, 2BB38b, 2BB48, bonus)
         mp3Files.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
         epCount.textContent = `${mp3Files.length} Episodes`;
@@ -191,7 +192,7 @@
           row.className = "ep-grid ep-row";
           row.innerHTML = `
             <span class="ep-play">
-              <audio controls preload="none">
+              <audio class="plyr-player" controls preload="none">
                 <source src="${streamUrl}" type="audio/mpeg">
               </audio>
             </span>
@@ -200,6 +201,25 @@
             <span class="ep-time r">${duration}</span>
           `;
           epList.appendChild(row);
+        });
+
+        // Initialize open-source Plyr widgets on all audio elements
+        document.querySelectorAll('.plyr-player').forEach(audioEl => {
+          const player = new Plyr(audioEl, {
+            controls: ['play', 'progress', 'current-time'],
+            iconUrl: 'https://cdn.plyr.io/3.7.8/plyr.svg'
+          });
+
+          // Automatically pause other audio instances when a new one starts
+          player.on('play', () => {
+            playerInstances.forEach(instance => {
+              if (instance !== player) {
+                instance.pause();
+              }
+            });
+          });
+
+          playerInstances.push(player);
         });
       })
       .catch(err => {
