@@ -10,26 +10,37 @@
 <link rel="icon" href="assets/album-art.png">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* Audio player width fix to prevent title overlap */
+  /* Page Container & Max Width Fix */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  /* Audio player column layout & width fix */
   .ep-table .ep-grid {
     display: grid;
-    grid-template-columns: 115px 45px 1fr 60px;
+    grid-template-columns: 120px 45px 1fr 60px;
     align-items: center;
     gap: 10px;
   }
+
   .ep-play {
     display: flex;
     align-items: center;
     min-width: 0;
   }
+
   .ep-play audio {
-    width: 110px;
+    width: 115px;
     height: 32px;
   }
+
   .ep-title {
     overflow: hidden;
     text-overflow: ellipsis;
-    word-break: break-word;
+    white-space: nowrap;
   }
 </style>
 </head>
@@ -106,7 +117,7 @@
       <div class="box" id="press">
         <div class="box-head">As seen in…</div>
         <a href="press/usa-today-2006.pdf" target="_blank" rel="noopener"><span class="pub">USA Today</span><span class="meta">“Parents get together via iPod ‘radio’” · Feb 2006</span></a>
-        <a href="press/globe-and-mail-2006.pdf" target="_blank" rel="noopener"><span class="pub">The Globe and Mail</span><span class="meta">Geekwatch: Two boobs and a baby · 2006</span></a>
+        <a href="press/globe-and-mail-2006.pdf" target="_blank" rel="noopener"><span class="pub">The Globe and Mail</span><span class="meta">Geekwatch: Two boobs and a baby · Jan 26, 2006</span></a>
         <a href="press/jackson-sun.pdf" target="_blank" rel="noopener"><span class="pub">The Jackson Sun (PDF)</span><span class="meta">Feature article · 2008</span></a>
       </div>
 
@@ -139,6 +150,17 @@
     const archiveItem = "2-bb-50";
     const epList = document.getElementById("ep-list");
     const epCount = document.getElementById("ep-count");
+
+    // Global listener: Pause any active audio player when a new one starts playing
+    document.addEventListener("play", (e) => {
+      if (e.target.tagName === "AUDIO") {
+        document.querySelectorAll("audio").forEach(audio => {
+          if (audio !== e.target) {
+            audio.pause();
+          }
+        });
+      }
+    }, true);
 
     function formatTime(seconds) {
       if (!seconds || isNaN(seconds)) return "--:--";
@@ -174,7 +196,7 @@
               </audio>
             </span>
             <span class="ep-num">${epNum}</span>
-            <span class="ep-title">${title}</span>
+            <span class="ep-title" title="${title}">${title}</span>
             <span class="ep-time r">${duration}</span>
           `;
           epList.appendChild(row);
