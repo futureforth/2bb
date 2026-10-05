@@ -48,10 +48,15 @@
       <section id="episodes">
         <div class="section-head">
           <h2>Two Boobs and a Baby+ podcast archive (2005–2008)</h2>
-          <span class="count" id="ep-count"></span>
+          <span class="count" id="ep-count">Loading...</span>
         </div>
         <div class="ep-table">
-          <div class="ep-grid ep-header"><span>Play</span><span>Ep.</span><span>Title</span><span class="r">Time</span></div>
+          <div class="ep-grid ep-header">
+            <span>Play</span>
+            <span>Ep.</span>
+            <span>Title</span>
+            <span class="r">Time</span>
+          </div>
           <div id="ep-list"></div>
         </div>
       </section>
@@ -104,6 +109,59 @@
     <span>Best viewed in Firefox 1.5 at 1024×768</span>
   </footer>
 </div>
+
 <script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const archiveItem = "2-bb-50";
+    const epList = document.getElementById("ep-list");
+    const epCount = document.getElementById("ep-count");
+
+    function formatTime(seconds) {
+      if (!seconds || isNaN(seconds)) return "--:--";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    fetch(`https://archive.org/metadata/${archiveItem}`)
+      .then(response => response.json())
+      .then(data => {
+        const mp3Files = data.files.filter(file => file.name.endsWith('.mp3'));
+
+        // Natural numerical sort (2BB1, 2BB2 ... 2BB38a, 2BB38b, 2BB48, bonus)
+        mp3Files.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+
+        epCount.textContent = `${mp3Files.length} Episodes`;
+        epList.innerHTML = "";
+
+        mp3Files.forEach(file => {
+          const rawName = file.name.replace(/\.[^/.]+$/, "");
+          const epNum = rawName.toLowerCase().includes("bonus") ? "Bonus" : rawName.replace(/^2BB/i, "");
+          const title = file.title || rawName;
+          const streamUrl = `https://archive.org/download/${archiveItem}/${encodeURIComponent(file.name)}`;
+          const duration = formatTime(file.length);
+
+          const row = document.createElement("div");
+          row.className = "ep-grid ep-row";
+          row.innerHTML = `
+            <span class="ep-play">
+              <audio controls preload="none">
+                <source src="${streamUrl}" type="audio/mpeg">
+              </audio>
+            </span>
+            <span class="ep-num">${epNum}</span>
+            <span class="ep-title">${title}</span>
+            <span class="ep-time r">${duration}</span>
+          `;
+          epList.appendChild(row);
+        });
+      })
+      .catch(err => {
+        console.error("Failed to load archive metadata:", err);
+        epCount.textContent = "Archive unavailable";
+      });
+  });
+</script>
 </body>
 </html>
