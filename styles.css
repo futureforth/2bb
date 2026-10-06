@@ -121,3 +121,19 @@ aside { min-width: 0; padding: 28px 22px; background: #fdf3f3; display: flex; fl
 .b-yellow { color: #7a0d12; background: #ffe14d; border: 1px solid #c79a00; }
 
 footer { background: linear-gradient(#a90f15, #6e0d12); color: #ffe0e0; font-size: 12px; padding: 14px 28px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* Extras page */
+.extras-list { display: flex; flex-direction: column; gap: 16px; }
+.extra { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; background: #fff; border: 1px solid #d9a9a9; box-shadow: 2px 2px 0 #f0d4d4; }
+.extra:nth-child(even) { background: #fdf3f3; }
+.extra-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.extra-type { font: bold 10px Verdana, sans-serif; letter-spacing: .05em; color: #fff; background: linear-gradient(#c8161d, #a90f15); border: 1px solid #6e0d12; padding: 2px 6px; }
+.extra-title { font: bold 17px/1.3 Georgia, "Times New Roman", serif; color: #b5121a; margin: 0; border: none; padding: 0; }
+.extra-date { font: 12px "Courier New", Courier, monospace; color: #6b4a4a; }
+.extra audio { width: 100%; height: 36px; }
+.extra video { width: 100%; border: 1px solid #a90f15; background: #000; }
+.extra-thumb { display: block; border: 1px solid #d9a9a9; background: #fff; padding: 4px; max-width: 360px; }
+.extra-thumb img { display: block; width: 100%; height: auto; }
+.extra .dl { align-self: flex-start; }
+.extra-video { position: relative; aspect-ratio: 16/9; border: 1px solid #a90f15; background: #000; }
+.extra-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
