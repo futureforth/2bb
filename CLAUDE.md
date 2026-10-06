@@ -34,3 +34,4 @@ Static site (no build step), deployed GitHub → Cloudflare Pages. Hosts: Heathe
 - Episode notes for 9, 10, 11, 20, 21, 22 include the "What we yammered on about" timecode lists.
 - Dates are accurate to within a day or so: the old blog, the feed and podcast.net each used a different clock.
 - Jackson Sun article date corrected to Apr 24, 2007 (printed on the scanned page), not 2008.
+- Header (all three pages): the masthead sticker is now the `.claim` badge ("Canada's first parenting podcast" / "The first parenting podcast hosted by a couple"); "Now archived! 2005–2008" moved to the thin `.archived-strip` under the nav. Dave chose the flat wording; neither claim could be independently proven or disproven.
