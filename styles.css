@@ -110,7 +110,11 @@ aside { min-width: 0; padding: 28px 22px; background: #fdf3f3; display: flex; fl
 @supports not (-webkit-box-reflect: below) { .album-flip { margin-bottom: 0; } }
 .album-flip-inner { position: relative; aspect-ratio: 1; }
 .album-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; border: 1px solid #6e0d12; }
-.album-back { opacity: 0; transition: opacity 1.5s ease; }
+.album-flip-inner { container-type: inline-size; }
+.album-back { position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease; }
+.album-caption { position: absolute; left: 1px; right: 1px; bottom: 1px; min-height: 13%; padding: 1.4cqw 2cqw 1.6cqw; background: #fee98e; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; text-align: center; color: #6e0d12; }
+.album-caption strong { font: bold 15px/1.1 Georgia, "Times New Roman", serif; font-size: 5.4cqw; color: #b5121a; }
+.album-caption span { font: 9px/1.2 Verdana, Geneva, Tahoma, sans-serif; font-size: 3.4cqw; }
 .album-flip:hover .album-back, .album-flip:focus .album-back { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .album-back { transition: none; } }
 .box { display: flex; flex-direction: column; border: 1px solid #d9a9a9; background: #fff; }
