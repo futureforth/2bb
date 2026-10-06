@@ -30,6 +30,10 @@ Static site (no build step), deployed GitHub → Cloudflare Pages. Hosts: Heathe
 - `DATES` + `NOTES` in `script.js` now cover episodes 1–48 (podcast.net listing for 1–21, old WordPress feed for 5 and 22–48). Long notes render in a collapsed "Show notes" toggle.
 - Still unknown: dates/notes for 49 and 50 (not in the feed, which ends Jun 16, 2008); which of 38a/38b is the "V.2.0" post (date is on both, notes on 38b).
 - Sidebar: listener shoutouts from the Frappr map; press adds Here's How! (June 2006) and paved.ca (Nov 2, 2005). Extras: forum and Podcast Pickle screenshots.
+<<<<<<< HEAD
 - Blog page built: 98 posts, 30 with full text transcribed from Wayback screenshots (Mar–Aug 2006, Sep 2006, Jan 2007, Jun–Jul 2007), the rest headline + date from the feed. To add a post's text, give it a `body` array in `blog.js`.
 - Episode notes for 9, 10, 11, 20, 21, 22 include the "What we yammered on about" timecode lists.
 - Dates are accurate to within a day or so: the old blog, the feed and podcast.net each used a different clock.
+=======
+- The feed has titles + dates (no body text) for ~80 non-episode blog posts — enough for a Blog timeline page if wanted.
+>>>>>>> origin/main
