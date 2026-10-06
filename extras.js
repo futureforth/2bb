@@ -6,7 +6,7 @@ const EXTRAS = [
   { file: "extras/2BB-not38.mp3", type: "audio", title: "Not Episode 38", date: "Mar 14, 2007 · 2 min", summary: "Technical difficulties delay Episode 38 and the reveal of the Urban Baby Runway Contest winner. This is the apology, and the last call for entries." },
   { file: "extras/2BB-motel.mp3", type: "audio", title: "From a Motel in Mason, Ohio…", date: "May 11, 2007 · 6 min", summary: "A road-trip dispatch recorded far from the kitchen table, in a motel room in Mason, Ohio." },
   { file: "extras/2BB-sick.mp3", type: "audio", title: "The Sick Show", date: "3 min", summary: "A short one recorded from the trenches of a household cold. Tissues not included." },
-  { file: "extras/2BB-update.mp3", type: "audio", title: "A Quick Update", date: "1 min", summary: "A super-short check-in to let listeners know what's going on." },
+  { file: "extras/2BB-update.mp3", type: "audio", title: "A Quick Update", date: "Jul 20, 2007 · 1 min", summary: "A super-short check-in to let listeners know what's going on." },
   { file: "extras/2BB-two-years-later.mp3", type: "audio", title: "Two Years Later", summary: "The boobs come back two years on to reflect on what changed, and what definitely didn't." },
   { file: "extras/2BB-conclusion.mp3", type: "audio", title: "The Conclusion", date: "7 min", summary: "The official farewell. Heather and Dave wrap up 2BB and thank everyone who listened along the way." },
   { file: "extras/2BB-podcast-pickle-2006.jpg", type: "image", title: "Our Podcast Pickle Listing", date: "Aug 2006", summary: "The 2BB page on Podcast Pickle, “the first podcast and vidcast community,” where we’d been members since Nov 7, 2005. One listener rated us 7 out of 10 overall, with 8s for sound and content." },
