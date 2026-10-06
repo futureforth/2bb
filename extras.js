@@ -3,8 +3,8 @@
 const EXTRAS = [
   { file: "extras/2BB-theme%20song.mp3", type: "audio", title: "The Theme Song", summary: "The tune that kicked off every episode. Hum along — you know you remember it." },
   { file: "extras/2BB-brief.mp3", type: "audio", title: "Stay Tuned for BIG News", date: "Dec 1, 2006 · 4 min", summary: "A quick hello to tease big news coming next episode, plus a shout-out to the Scarborough Dude's Dicks n' Janes podcast. Dave has a shepherd's pie in the oven, and it will not beat his mum's." },
-  { file: "extras/2BB-not38.mp3", type: "audio", title: "Not Episode 38", date: "Mar 15, 2007 · 2 min", summary: "Technical difficulties delay Episode 38 and the reveal of the Urban Baby Runway Contest winner. This is the apology, and the last call for entries." },
-  { file: "extras/2BB-motel.mp3", type: "audio", title: "From a Motel in Mason, Ohio…", date: "2007 · 6 min", summary: "A road-trip dispatch recorded far from the kitchen table, in a motel room in Mason, Ohio." },
+  { file: "extras/2BB-not38.mp3", type: "audio", title: "Not Episode 38", date: "Mar 14, 2007 · 2 min", summary: "Technical difficulties delay Episode 38 and the reveal of the Urban Baby Runway Contest winner. This is the apology, and the last call for entries." },
+  { file: "extras/2BB-motel.mp3", type: "audio", title: "From a Motel in Mason, Ohio…", date: "May 11, 2007 · 6 min", summary: "A road-trip dispatch recorded far from the kitchen table, in a motel room in Mason, Ohio." },
   { file: "extras/2BB-sick.mp3", type: "audio", title: "The Sick Show", date: "3 min", summary: "A short one recorded from the trenches of a household cold. Tissues not included." },
   { file: "extras/2BB-update.mp3", type: "audio", title: "A Quick Update", date: "1 min", summary: "A super-short check-in to let listeners know what's going on." },
   { file: "extras/2BB-two-years-later.mp3", type: "audio", title: "Two Years Later", summary: "The boobs come back two years on to reflect on what changed, and what definitely didn't." },
