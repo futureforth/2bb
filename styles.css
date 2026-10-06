@@ -51,7 +51,7 @@ p { margin: 0; font-size: 14px; line-height: 1.7; text-wrap: pretty; max-width: 
 
 /* Episodes */
 .ep-table { border: 1px solid #d9a9a9; }
-.ep-grid { display: grid; grid-template-columns: 170px 64px minmax(0,1fr) 52px; gap: 12px; align-items: center; }
+.ep-grid { display: grid; grid-template-columns: 170px 64px 44px minmax(0,1fr) 52px; gap: 12px; align-items: center; }
 .ep-header { padding: 6px 10px; background: linear-gradient(#c8161d, #a90f15); color: #fff; font: bold 11px Verdana, sans-serif; text-transform: uppercase; letter-spacing: .04em; }
 .r { text-align: right; }
 .ep { padding: 6px 10px; background: #fff; border-top: 1px solid #f0d4d4; }
@@ -62,6 +62,7 @@ p { margin: 0; font-size: 14px; line-height: 1.7; text-wrap: pretty; max-width: 
 .ep-loading { padding: 16px 10px; font-size: 13px; color: #6b4a4a; }
 .code { font: bold 12px "Courier New", Courier, monospace; color: #b5121a; white-space: nowrap; }
 .title { font-size: 14px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.year { font: 12px "Courier New", Courier, monospace; color: #6b4a4a; }
 .dur { font: 12px "Courier New", Courier, monospace; color: #6b4a4a; text-align: right; }
 .ep-play { min-width: 0; }
 .ep-play audio { width: 100%; height: 32px; }
@@ -77,11 +78,12 @@ p { margin: 0; font-size: 14px; line-height: 1.7; text-wrap: pretty; max-width: 
 @media (max-width: 560px) {
   .ep-header { display: none; }
   .ep { padding: 10px 12px; }
-  .ep .ep-grid { grid-template-columns: auto minmax(0,1fr) auto; grid-template-areas: "code title dur" "play play play"; row-gap: 6px; column-gap: 10px; }
+  .ep .ep-grid { grid-template-columns: auto auto minmax(0,1fr) auto; grid-template-areas: "code year title dur" "play play play play"; row-gap: 6px; column-gap: 10px; }
   .ep .ep-play { grid-area: play; }
   .ep .code { grid-area: code; }
   .ep .title { grid-area: title; white-space: normal; }
   .ep .dur { grid-area: dur; }
+  .ep .year { grid-area: year; }
 }
 
 /* Where are they now */
@@ -107,7 +109,7 @@ aside { min-width: 0; padding: 28px 22px; background: #fdf3f3; display: flex; fl
 .meta { font-size: 12px; color: #6b4a4a; line-height: 1.4; }
 .clippings { display: flex; flex-direction: column; gap: 10px; }
 .label { font: bold 12px Verdana, sans-serif; color: #7a0d12; text-transform: uppercase; letter-spacing: .04em; }
-.clip-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; }
+.clip-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
 .clip { aspect-ratio: 3/4; border: 1px solid #d9a9a9; background: #fff; padding: 3px; box-shadow: 2px 2px 0 #f0d4d4; display: block; position: relative; }
 .clip img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .empty img { display: none; }
@@ -151,7 +153,8 @@ footer { background: linear-gradient(#a90f15, #6e0d12); color: #ffe0e0; font-siz
   .count { font-size: 14px; }
   .ep-header { font-size: 13px; padding: 8px 12px; }
   .ep { padding: 8px 12px; }
-  .ep-grid { grid-template-columns: 190px 72px minmax(0,1fr) 60px; }
+  .ep-grid { grid-template-columns: 190px 72px 52px minmax(0,1fr) 60px; }
+  .year { font-size: 14px; }
   .code { font-size: 14px; }
   .title { font-size: 16px; }
   .dur { font-size: 14px; }
