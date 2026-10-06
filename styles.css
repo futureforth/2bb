@@ -11,7 +11,7 @@ a:hover { color: #7a0d12; background: #ffef9e; }
 
 /* Masthead */
 .masthead { background: linear-gradient(#e83a3f, #c8161d 55%, #a90f15); border-bottom: 4px solid #6e0d12; padding: 28px 28px 0; }
-.masthead-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.masthead-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .logo { display: flex; flex-direction: column; gap: 6px; }
 .tiles { display: flex; gap: 18px; flex-wrap: wrap; }
 .tile-group { display: flex; gap: 4px; }
@@ -20,7 +20,7 @@ a:hover { color: #7a0d12; background: #ffef9e; }
 .and-a-baby { font: italic bold 34px "Trebuchet MS", Verdana, sans-serif; color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,.35); transform: rotate(-4deg); display: inline-block; white-space: nowrap; }
 .star { color: #ffe14d; }
 .tagline { font-size: 12px; color: #ffe0e0; white-space: nowrap; }
-.claim { margin: 10px 0 14px; max-width: 300px; display: flex; flex-direction: column; gap: 6px; text-align: center; color: #6e0d12; background: linear-gradient(#fff0a0, #ffe14d 45%, #f5cf1d); border: 1px solid #c79a00; outline: 1px dashed #c79a00; outline-offset: -6px; padding: 12px 18px 10px; transform: rotate(3deg); box-shadow: 2px 3px 0 rgba(0,0,0,.35); }
+.claim { margin: 6px 0; max-width: 300px; display: flex; flex-direction: column; gap: 6px; text-align: center; color: #6e0d12; background: linear-gradient(#fff0a0, #ffe14d 45%, #f5cf1d); border: 1px solid #c79a00; outline: 1px dashed #c79a00; outline-offset: -6px; padding: 12px 18px 10px; transform: rotate(3deg); box-shadow: 2px 3px 0 rgba(0,0,0,.35); }
 .claim-kicker { font: bold 11px/1.2 Verdana, sans-serif; text-transform: uppercase; letter-spacing: .12em; }
 .claim-logo { display: block; width: 140px; height: auto; margin: 2px auto; }
 .claim-sub { font: bold 13px/1.4 "Courier New", Courier, monospace; letter-spacing: .2em; border-top: 1px solid #c79a00; padding-top: 6px; text-wrap: balance; }
