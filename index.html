@@ -8,52 +8,10 @@
 <meta property="og:title" content="Two Boobs and a Baby — podcast archive (2005–2008)">
 <meta property="og:image" content="assets/album-art.png">
 <link rel="icon" href="assets/album-art.png">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
 <link rel="stylesheet" href="styles.css">
-
-<!-- Open-Source Plyr Audio Player -->
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-
-<style>
-  /* Centered Page Layout & Width Limit */
-  .page {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 15px;
-    box-sizing: border-box;
-  }
-
-  /* Episode Table Grid Layout */
-  .ep-table .ep-grid {
-    display: grid;
-    grid-template-columns: 140px 45px 1fr 60px;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .ep-play {
-    width: 140px;
-    min-width: 0;
-  }
-
-  /* Compact Audio Player Controls */
-  .plyr--audio .plyr__controls {
-    padding: 2px 6px;
-    background: #f1f3f4;
-    border-radius: 16px;
-  }
-
-  .plyr__time {
-    font-size: 11px;
-    padding: 0 4px;
-  }
-
-  .ep-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-</style>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js" defer></script>
+<script src="script.js" defer></script>
 </head>
 <body>
 <div class="page">
@@ -93,7 +51,7 @@
       <section id="episodes">
         <div class="section-head">
           <h2>Two Boobs and a Baby+ podcast archive (2005–2008)</h2>
-          <span class="count" id="ep-count">Loading...</span>
+          <span class="count" id="ep-count">Loading…</span>
         </div>
         <div class="ep-table">
           <div class="ep-grid ep-header">
@@ -102,7 +60,9 @@
             <span>Title</span>
             <span class="r">Time</span>
           </div>
-          <div id="ep-list"></div>
+          <div id="ep-list">
+            <div class="ep-loading">Loading episodes from the vault…</div>
+          </div>
         </div>
       </section>
 
@@ -154,79 +114,5 @@
     <span>Best viewed in Firefox 1.5 at 1024×768</span>
   </footer>
 </div>
-
-<script src="script.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const archiveItem = "2-bb-50";
-    const epList = document.getElementById("ep-list");
-    const epCount = document.getElementById("ep-count");
-    const playerInstances = [];
-
-    function formatTime(seconds) {
-      if (!seconds || isNaN(seconds)) return "--:--";
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
-      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-    }
-
-    fetch(`https://archive.org/metadata/${archiveItem}`)
-      .then(response => response.json())
-      .then(data => {
-        const mp3Files = data.files.filter(file => file.name.endsWith('.mp3'));
-
-        // Natural numerical sort (2BB1, 2BB2, ... 2BB38a, 2BB38b, 2BB48, bonus)
-        mp3Files.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
-
-        epCount.textContent = `${mp3Files.length} Episodes`;
-        epList.innerHTML = "";
-
-        mp3Files.forEach(file => {
-          const rawName = file.name.replace(/\.[^/.]+$/, "");
-          const epNum = rawName.toLowerCase().includes("bonus") ? "Bonus" : rawName.replace(/^2BB/i, "");
-          const title = file.title || rawName;
-          const streamUrl = `https://archive.org/download/${archiveItem}/${encodeURIComponent(file.name)}`;
-          const duration = formatTime(file.length);
-
-          const row = document.createElement("div");
-          row.className = "ep-grid ep-row";
-          row.innerHTML = `
-            <span class="ep-play">
-              <audio class="plyr-player" controls preload="none">
-                <source src="${streamUrl}" type="audio/mpeg">
-              </audio>
-            </span>
-            <span class="ep-num">${epNum}</span>
-            <span class="ep-title" title="${title}">${title}</span>
-            <span class="ep-time r">${duration}</span>
-          `;
-          epList.appendChild(row);
-        });
-
-        // Initialize open-source Plyr widgets on all audio elements
-        document.querySelectorAll('.plyr-player').forEach(audioEl => {
-          const player = new Plyr(audioEl, {
-            controls: ['play', 'progress', 'current-time'],
-            iconUrl: 'https://cdn.plyr.io/3.7.8/plyr.svg'
-          });
-
-          // Automatically pause other audio instances when a new one starts
-          player.on('play', () => {
-            playerInstances.forEach(instance => {
-              if (instance !== player) {
-                instance.pause();
-              }
-            });
-          });
-
-          playerInstances.push(player);
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load archive metadata:", err);
-        epCount.textContent = "Archive unavailable";
-      });
-  });
-</script>
 </body>
 </html>
