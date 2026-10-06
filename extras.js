@@ -9,6 +9,8 @@ const EXTRAS = [
   { file: "extras/2BB-update.mp3", type: "audio", title: "A Quick Update", date: "1 min", summary: "A super-short check-in to let listeners know what's going on." },
   { file: "extras/2BB-two-years-later.mp3", type: "audio", title: "Two Years Later", summary: "The boobs come back two years on to reflect on what changed, and what definitely didn't." },
   { file: "extras/2BB-conclusion.mp3", type: "audio", title: "The Conclusion", date: "7 min", summary: "The official farewell. Heather and Dave wrap up 2BB and thank everyone who listened along the way." },
+  { file: "extras/2BB-podcast-pickle-2006.jpg", type: "image", title: "Our Podcast Pickle Listing", date: "Aug 2006", summary: "The 2BB page on Podcast Pickle, “the first podcast and vidcast community,” where we’d been members since Nov 7, 2005. One listener rated us 7 out of 10 overall, with 8s for sound and content." },
+  { file: "extras/2BB-forum-2006.jpg", type: "image", title: "The Forum", date: "Aug 2006", summary: "“Meet fellow parents and the boobs here. Share your tips, tricks and stories.” A snapshot of the old 2BB forum, where 43 members had made 175 posts across 65 topics — from baby tips and birthing stories to Hot Products / Not Products." },
   { file: "https://drive.google.com/file/d/1xzZgd6puTel2Kw_8gBUBDd9VjJBs1Q-v/view", drive: "1xzZgd6puTel2Kw_8gBUBDd9VjJBs1Q-v", type: "video", title: "Episode 49 (Video)", summary: "2BB on camera! The video edition of Episode 49." }
 ];
 

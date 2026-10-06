@@ -24,3 +24,9 @@ Static site (no build step), deployed GitHub → Cloudflare Pages. Hosts: Heathe
 2. **Yahoo! Podcasts series page** — https://web.archive.org/web/20060816013314/http://podcasts.yahoo.com/series?s=1435097545b5d67b73e298b8126b44f5 — grab any listener reviews/rating; add 1–3 short quotes to the sidebar.
 3. **Old blog** — https://web.archive.org/web/20060811115641/http://www.twoboobsandababy.com/twoboobs/index.php — optional "Blog" page with dated non-episode posts, styled like the Extras page.
 4. Unknown years for episodes 46, 47, 48, 50 — fill from feeds if found.
+
+## Done (Oct 2026)
+- `DATES` + `NOTES` in `script.js` now cover episodes 1–48 (podcast.net listing for 1–21, old WordPress feed for 5 and 22–48). Long notes render in a collapsed "Show notes" toggle.
+- Still unknown: dates/notes for 49 and 50 (not in the feed, which ends Jun 16, 2008); which of 38a/38b is the "V.2.0" post (date is on both, notes on 38b).
+- Sidebar: listener shoutouts from the Frappr map; press adds Here's How! (June 2006) and paved.ca (Nov 2, 2005). Extras: forum and Podcast Pickle screenshots.
+- The feed has titles + dates (no body text) for ~80 non-episode blog posts — enough for a Blog timeline page if wanted.
