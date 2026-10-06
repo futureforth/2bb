@@ -29,8 +29,8 @@ const DATES = {
   "2BB45":"Sep 24, 2007","2BB46":"Nov 6, 2007","2BB47":"Jan 18, 2008","2BB48":"Mar 23, 2008","2BB49":"Jun 19, 2008"
 };
 // The last two files in the archive.org item are numbered one and two behind the episodes they hold: 2BB49.mp3 is
-// episode 50 ("From the Deck on Father's Day") and 2BB50.mp3 is episode 52 (the farewell). The real episode 49 went only
-// to email-newsletter subscribers and episode 51 (Jun 25, 2008) is not in the item. EP_NUM maps file name to episode number.
+// episode 50 ("From the Deck on Father's Day") and 2BB50.mp3 is episode 52 (the farewell). The real episode 49 was a video that went only
+// to email-newsletter subscribers (it is on the Extras page) and episode 51 (Jun 25, 2008) is not in the item. EP_NUM maps file name to episode number.
 const EP_NUM = { "2BB49":"50", "2BB50":"52" };
 const NOTES = {
   "2BB1":"Welcome to Two Boobs and a Baby.",
