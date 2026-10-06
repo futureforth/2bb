@@ -33,3 +33,4 @@ Static site (no build step), deployed GitHub → Cloudflare Pages. Hosts: Heathe
 - Blog page built: 98 posts, 30 with full text transcribed from Wayback screenshots (Mar–Aug 2006, Sep 2006, Jan 2007, Jun–Jul 2007), the rest headline + date from the feed. To add a post's text, give it a `body` array in `blog.js`.
 - Episode notes for 9, 10, 11, 20, 21, 22 include the "What we yammered on about" timecode lists.
 - Dates are accurate to within a day or so: the old blog, the feed and podcast.net each used a different clock.
+- Jackson Sun article date corrected to Apr 24, 2007 (printed on the scanned page), not 2008.
