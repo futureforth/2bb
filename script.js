@@ -9,7 +9,7 @@ const YEARS = {
   "2BB23":2006,"2BB24":2006,"2BB25":2006,"2BB26":2006,"2BB27":2006,"2BB28":2006,"2BB29":2006,"2BB30":2006,"2BB31":2006,"2BB32":2006,
   "2BB33":2007,"2BB34":2007,"2BB35":2007,"2BB36":2007,"2BB37":2007,"2BB38a":2007,"2BB38b":2007,"2BB39":2007,"2BB40":2007,
   "2BB41":2007,"2BB42":2007,"2BB43":2007,"2BB44":2007,"2BB45":2007,
-  "2BB50":2008
+  "2BB49":2008,"2BB50":2008
 };
 
 // Full release dates and show notes. Episodes 1–21 come from the podcast.net directory listing (Jul 2006 capture);
@@ -26,8 +26,12 @@ const DATES = {
   "2BB31":"Dec 9, 2006","2BB32":"Dec 24, 2006","2BB33":"Jan 12, 2007","2BB34":"Jan 24, 2007","2BB35":"Feb 2, 2007",
   "2BB36":"Feb 14, 2007","2BB37":"Mar 6, 2007","2BB38a":"Mar 15, 2007","2BB38b":"Mar 15, 2007","2BB39":"Mar 21, 2007",
   "2BB40":"Apr 11, 2007","2BB41":"Apr 25, 2007","2BB42":"May 15, 2007","2BB43":"Jun 4, 2007","2BB44":"Aug 5, 2007",
-  "2BB45":"Sep 24, 2007","2BB46":"Nov 6, 2007","2BB47":"Jan 17, 2008","2BB48":"Mar 23, 2008"
+  "2BB45":"Sep 24, 2007","2BB46":"Nov 6, 2007","2BB47":"Jan 18, 2008","2BB48":"Mar 23, 2008","2BB49":"Jun 19, 2008"
 };
+// The last two files in the archive.org item are numbered one and two behind the episodes they hold: 2BB49.mp3 is
+// episode 50 ("From the Deck on Father's Day") and 2BB50.mp3 is episode 52 (the farewell). The real episode 49 went only
+// to email-newsletter subscribers and episode 51 (Jun 25, 2008) is not in the item. EP_NUM maps file name to episode number.
+const EP_NUM = { "2BB49":"50", "2BB50":"52" };
 const NOTES = {
   "2BB1":"Welcome to Two Boobs and a Baby.",
   "2BB2":"Here it is… Episode 2! Today is our due date… will Sam join us?",
@@ -75,7 +79,8 @@ const NOTES = {
   "2BB45":"Stuff in your teeth, ad words = microphone, sitting in the screened-in porch, visit home to Toronto, sleeping with the kids, Ella's first birthday is October 9, Sam's second birthday is October 25, Mickey Mouse Club, Sam's pacifier addiction, call us 206-350-4819, Gnomedex, BarCamp Nashville, PodCamp Nashville, meetup.com, Heather got pooped on, find Dave on Twitter: www.twitter.com/davedelaney, bath tub poo tips, Caddyshack, Podcast New Media Expo, Emma, They Might Be Giants, Higglytown Heroes, kids cool rock n' roll bands? Would you like to include your music in our show? We'd love to feature some cool new music for kids. Let us know. UPDATE: If I was unclear I apologize. Please only click the ads if you're interested in the products. I did mention that clicking ads helps us pay for the show, but it's important to understand that I'm not plugging that you go click crazy. If you see an ad that interests you please DO click it to check it out. Thanks. Dave.",
   "2BB46":"A long over due episode during Dave's morning commute. Link love in Episode 46 includes: PodCamp Nashville, Emma Email Marketing, New Media Expo, monetization. Find Dave at his new blog: www.davemadethat.com and on Twitter: www.twitter.com/davedelaney. Audio Comments from: Charles Cadenhead and Vivian, Andy and T.J. Thanks guys. Thanks to everybody else who left us comments recently to wish us a happy second year podcasting, happy first birthday Ella, and happy second birthday Sam. Our listeners all rock!",
   "2BB47":"Warning: This episode may ruin Christmas. Do not listen with your wee ones. Show notes: - We're back and we're almost at 50 episodes. Congrats to Joe @ JaffeJuice for 100 episodes - Update about the kids. Ella is now 15 months and Sam is 26 months - Kissing TVs - Who's more southern sounding? - Christmas recap: gobble gobble - New friends in the neighborhood - Dogs pooping in our yard - RSS explained by Heather - The stomach virus from hell - Yo Gabba Gabba - Heather's \"relaxing\" weekend away - Sleep deprived - Please call us 206-350-4819 and leave an audio comment - PodCamp Nashville - Find Dave on Twitter: www.twitter.com/davedelaney - Join our Facebook Group",
-  "2BB48":"first episode in eight weeks, or two months - Sam is almost 2 1/2 and Ella is 17 months old - letting the little ones cry it out - Ella is talking up a storm - Heather's theme song for Ella (sorry Queen) - Sam's becoming a cool big brother - PodCamp Nashville - PodCamp Toronto - SXSW Interactive (read about it on Dave's blog) - Dave missed the Nashville snow - Easter egg hunting on the farm - tickled by a rooster - Did you get photos with the Easter bunny? Please comment and tell us - Easter egg hunting continues at the Nashville Zoo (which rocks by the way)"
+  "2BB48":"first episode in eight weeks, or two months - Sam is almost 2 1/2 and Ella is 17 months old - letting the little ones cry it out - Ella is talking up a storm - Heather's theme song for Ella (sorry Queen) - Sam's becoming a cool big brother - PodCamp Nashville - PodCamp Toronto - SXSW Interactive (read about it on Dave's blog) - Dave missed the Nashville snow - Easter egg hunting on the farm - tickled by a rooster - Did you get photos with the Easter bunny? Please comment and tell us - Easter egg hunting continues at the Nashville Zoo (which rocks by the way)",
+  "2BB49":"Show notes: - Thanks to Tommy Vallier for saving our blog. Read about that here. - Dave comes on to the mom listeners - Father's Day recap - 9 am cookies - Ella's first day at school (Mother's Day Out) - Switching from bottles to cups - Monkey see, monkey do. How Sam is copying kids and Ella is copying our bad habits - Dave's Slip N' Slide mishap (Video) - Spiders are trying to kill Dave - Ella and Sam are swimming - Heather's swimming tip - Dave hates Dora & Barney - We love Yo Gabba Gabba - Ella is obsessed with Mickey Mouse (AKA \"Hotdog\")"
 };
 
 const epList = document.getElementById("ep-list");
@@ -100,7 +105,7 @@ fetch(`https://archive.org/metadata/${ARCHIVE_ITEM}`)
     epList.innerHTML = mp3s.map(file => {
       const raw = file.name.replace(/\.[^/.]+$/, "");
       const isBonus = /bonus/i.test(raw);
-      const num = isBonus ? "Bonus" : raw.replace(/^2BB/i, "");
+      const num = isBonus ? "Bonus" : (EP_NUM[raw] || raw.replace(/^2BB/i, ""));
       const title = file.title || raw;
       const url = `https://archive.org/download/${ARCHIVE_ITEM}/${encodeURIComponent(file.name)}`;
       return `
