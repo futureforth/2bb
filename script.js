@@ -12,6 +12,37 @@ const YEARS = {
   "2BB50":2008
 };
 
+// Full release dates and show notes for episodes 1–21, from the podcast.net directory listing
+// (Wayback Machine capture, Jul 16, 2006). Episode 5's listed date was a placeholder, so it keeps its year only.
+const DATES = {
+  "2BB1":"Oct 16, 2005","2BB2":"Oct 25, 2005","2BB3":"Dec 1, 2005","2BB4":"Dec 24, 2005",
+  "2BB6":"Feb 5, 2006","2BB7":"Feb 20, 2006","2BB8":"Feb 28, 2006","2BB9":"Mar 9, 2006","2BB10":"Mar 21, 2006",
+  "2BB11":"Mar 27, 2006","2BB12":"Apr 10, 2006","2BB13":"Apr 24, 2006","2BB14":"May 2, 2006","2BB15":"May 9, 2006",
+  "2BB16":"May 18, 2006","2BB17":"Jun 1, 2006","2BB18":"Jun 9, 2006","2BB19":"Jun 29, 2006","2BB20":"Jul 2, 2006","2BB21":"Jul 11, 2006"
+};
+const NOTES = {
+  "2BB1":"Welcome to Two Boobs and a Baby.",
+  "2BB2":"Here it is… Episode 2! Today is our due date… will Sam join us?",
+  "2BB3":"Introducing Sam Delaney!",
+  "2BB4":"The “Holiday” Show.",
+  "2BB5":"Number five is alive!",
+  "2BB6":"Well, we did it. We managed to produce another podcast in the course of one week! Can you believe it? We can’t!",
+  "2BB7":"Last week Heather and Sam were basking in the sun in Arizona. I was basking in the snow in New York. We’re back and Episode 7 is ready to rock!",
+  "2BB8":"Sam gets his photos made, shots and his first fever – all this and more in Episode 8!",
+  "2BB9":"Tonight’s episode of Two Boobs and a Baby is brought to you by the letter “T”.",
+  "2BB10":"Tearing up at Pigeon Break.",
+  "2BB11":"Sam’s 5th month of fun!",
+  "2BB12":"Our big surprise is revealed!",
+  "2BB14":"Hear all about Sam’s six month check-up, being pregnant again, and Dave & Heather’s hot date!",
+  "2BB15":"Surrounded by chaos and sleepiness… we’re back!",
+  "2BB16":"Mother’s Day, Running Late, Nasty card, Designer Mums vs. Frazzled Mums, Dave’s bad back, New Toys, Pregnancy Update, French Fries, and The Sex of Baby #2!",
+  "2BB17":"The A-Team, and other things…",
+  "2BB18":"Find out what our new show name is.",
+  "2BB19":"We’re in the June issue of Here’s How magazine! Plus: Our 5th anniversary, Dave’s getaway, Sam’s insomnia, and massages.",
+  "2BB20":"Happy Canada Day! It’s Podcasters Across Borders, and more.",
+  "2BB21":"Sam attempts an escape from his bed, rainy day advice, fast cars and HOT women! All this and more!"
+};
+
 const epList = document.getElementById("ep-list");
 const epCount = document.getElementById("ep-count");
 const players = [];
@@ -42,9 +73,10 @@ fetch(`https://archive.org/metadata/${ARCHIVE_ITEM}`)
           <div class="ep-grid">
             <span class="ep-play"><audio class="plyr-player" preload="none" controls><source src="${url}" type="audio/mpeg"></audio></span>
             <span class="code">${isBonus ? "BONUS" : "2BB-" + esc(num)}</span>
-            <span class="year">${YEARS[raw] || "—"}</span>
+            <span class="year">${DATES[raw] || YEARS[raw] || "—"}</span>
             <span class="title" title="${esc(title)}">${esc(title)}</span>
             <span class="dur">${formatTime(file.length)}</span>
+            ${NOTES[raw] ? `<span class="ep-notes">${esc(NOTES[raw])}</span>` : ""}
           </div>
         </div>`;
     }).join("");
